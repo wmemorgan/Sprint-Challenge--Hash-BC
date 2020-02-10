@@ -45,9 +45,6 @@ def valid_proof(last_hash, proof):
     guess_hash = hashlib.sha256(str(proof).encode()).hexdigest()
     prev_proof_hash = hashlib.sha256(str(last_hash).encode()).hexdigest()
 
-    print(
-        f"Compare previous proof {prev_proof_hash[-6:]} to new proof {guess_hash[:6]}")
-
     return prev_proof_hash[-6:] == guess_hash[:6]
 
 
