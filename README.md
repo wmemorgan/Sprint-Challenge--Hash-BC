@@ -23,12 +23,48 @@ This sprint challenge is divided up into three parts:  Hash tables coding, block
 ## Interview Questions
 
 Explain in detail the workings of a dynamic array:
+An array is a sequence of elements stored in a continuous memory.
+
+To declare an array:
+
+    - Determine the initial size of the array
+    - Request a block of memory for the array
+    - Receive the memory address of the reserved block
+    - Write values into the array
+
+If all the array blocks are full and you need to add additional data:
+    - Invoke some type of append/push method to add to the end of the array
+    - A new memory address block will be reserved which is twice the size of the current memory address block
+    - Values from the existing array will be copied one at a time into the new address block
+    - The array points to the newer bigger address block and releases the previous address block
+
 * What is the runtime complexity to access an array, add or remove from the front, and add or remove from the back?
+    Access an array by index number: O(1)
+    Add or remove element from the front: O(n) - Array will need to shift all the indices
+    Add or remove element from the back: Performance can be O(1) for deletion if there is room in the array. 
+    O(n) - if the array needs to be resized  
+
+
 * What is the worse case scenario if you try to extend the storage size of a dynamic array?
+    O(n) - because extending array storage size means moving elements from the current memory address block to a newer, bigger memory address block ONE AT A TIME.
 
 Explain how a blockchain is structured. What are the blocks, what is the chain? How is the data organized?
+    A blockchain is structured like a linked list. 
+    The blocks are object nodes in the list which usually contain:
+        - Index number
+        - Timestamp
+        - List of transactions
+        - Proof used to mine the block
+        - Cryptographic hash of previous block (used to link the blocks together)
+    The chain is the list of blocks that are connected to each other by the previous hash.
  
 Explain how proof of work functions. How does it operate. How does this protect the chain from attack. What kind of attack is possible?
+    It is an arbitrarily difficult problem that is solved by spending a large amount of computation time. The problem is very difficult to replicate but easy to prove. 
+    This approach is intended to PREVENT an attacker from:
+        -Copying the chain
+        -Modifying an earlier block
+        -Regenerating subsequent blocks with the new modified block
+        -Pawning off the corrupted chain as a legitimate
 
 ## Project Set Up
 
