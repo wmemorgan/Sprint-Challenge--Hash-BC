@@ -19,14 +19,15 @@ def get_indices_of_item_weights(weights, length, limit):
             # Handle duplicate values
             if weight * 2 == limit:
                 return (index, hash_table_retrieve(ht, weight))
-        
+        # Increment index
         index += 1
+
         # Search the hashtable for the addend
         addend = limit - weight
         if hash_table_retrieve(ht, addend):
             return (hash_table_retrieve(ht, weight), hash_table_retrieve(ht, addend))
 
-
+    # Default return
     return None
 
 
